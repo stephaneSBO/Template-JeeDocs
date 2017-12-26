@@ -38,8 +38,10 @@
     <section class="page-header">
 	<img id="logo_jeedom" src="{{ site.github.url }}/assets/logo_white.png"></img>
       	<h1 id="nom-plugin" class="project-name">{{ site.github.project_title }}</h1>
-      	<img id="logo_plugin" class="hide_mobile" 
-	     src="{{ "https://raw.githubusercontent.com/" | append: site.github.owner_name | append: "/" | append: site.github.repository_name | append: "/master/plugin_info/" | append: site.nameLogo}}"></img>
+      	{% if site.nameLogo %}		
+			<img id="logo_plugin" class="hide_mobile" 
+			 src="{{ "https://raw.githubusercontent.com/" | append: site.github.owner_name | append: "/" | append: site.github.repository_name | append: "/master/plugin_info/" | append: site.nameLogo}}"></img>
+		{% endif %}
       	<div id="blocLangs">
 	{% if site.langs.size >= 2 %}
 	  {% for lang in site.langs %}
