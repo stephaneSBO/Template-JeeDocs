@@ -9,104 +9,106 @@ key_do_not_edit_label:
 
 # Présentation
 
-Cette documentation à pour but d'expliquer comment mettre en place une documentations **"Github Page"** pour vos plugin Jeedom.
+Cette documentation à pour but d'expliquer comment mettre en place une documentation **"Github Page"** pour vos plugins Jeedom.
 
-L'équipe jeedom SAS met à diposition se dépot prêt à l'emplois pour l'installation d'une documentation aux stadard jeedom.
+L'équipe jeedom SAS met à diposition ce dépôt prêt à l'emploi pour l'installation d'une documentation aux standards jeedom.
 
-Dans se document vous trouvez les différente étapes pour l'installation de la documentation dans votre plugin, les bases pour la mise en forme automatique, les configurations possible, des informations pour une personnalisation avancée, des liens vers des ressources.
+Dans ce document, vous trouverez les différentes étapes pour l'installation de la documentation dans votre plugin, les bases pour la mise en forme automatique, les configurations possibles, des informations pour une personnalisation avancée, des liens vers diverses ressources.
 
-# Préembule 
-Pour générer la documentation d'un plugin, le principal composent utiliser c'est la fonction ["Gitub Page"](https://pages.github.com/), elle permet d'utiliser divers technologie affin de générer des fichier HTML pour créer un site statique.
+Nb: Les documentations Github Pages sont compatibles avec les dépôts privés.
 
-Les pages de documentations sont écrit au format ["Mardown"](https://daringfireball.net/projects/markdown/), avec une extention ".md", ses fichier sont repris par 2 intérprétateurs.
+# Préambule 
+Pour générer la documentation d'un plugin, le principal composant utilisé est la fonction ["Gitub Page"](https://pages.github.com/), elle permet d'utiliser diverses technologies afin de générer des fichier HTML pour créer un site statique.
 
-- Le premier [Jekyll](https://jekyllrb.com/) permet d'ajouter un système de variable,fichier de configuration, et convertis les fichiers .md en HTML.
+Les pages de documentation sont écrites au format ["Mardown"](https://daringfireball.net/projects/markdown/), avec une extension ".md", ses fichiers sont repris par 2 intérpréteurs.
 
-- Le deuxième, [Liquid](https://shopify.github.io/liquid/)  est un langage de template permetent de faire des calcule, teste, et traitement.
+- Le premier [Jekyll](https://jekyllrb.com/) permet d'ajouter un système de variable, fichier de configuration, et converti les fichiers .md en HTML.
 
-L'union de ses technologies permet une rédaction simple de page web sans connaissance en language de programation.
+- Le deuxième, [Liquid](https://shopify.github.io/liquid/) est un language de template permettant de faire des calculs, tests, et traitements.
 
-Pour les devloppeurs c'est un gains importent de temps tout en garantissent une présentation de qualité pour la documentation de leur plugin.
+L'union de ses technologies permet une rédaction simple de page web sans connaissance en language de programmation.
+
+Pour les developpeurs c'est un gain important de temps tout en garantissant une présentation de qualité pour la documentation de leurs plugins.
 
 
 # Installation de la documentation
 
-## Installation des fichiers et dossier
+## Installation des fichiers et dossiers
 
 Se rendre sur le dépôt Github du Template JeeDocs -> .......***URL à ajouter***.......
 
-Télécharger sur votre ordinateur le .zip du dépot
+Télécharger sur votre ordinateur le .zip du dépôt.
 
-Dans le dépot de votre plugin ou dans sont dossier local, créer un dossier ***docs*** à la racine
+Dans le dépôt de votre plugin ou dans son dossier local, créer un dossier ***docs*** à la racine.
 
-Dézipper le fichier télécharger dans le dossier local ***docs*** de votre plugin ou dans un dossier temporaire pour transférer les fichiers et dossiers dans le dosser ***docs*** de votre dépot Github. Le tout dois se trouver dans la branche **"master"**.
+Dézipper le fichier téléchargé dans le dossier local ***docs*** de votre plugin ou dans un dossier temporaire pour transférer les fichiers et dossiers dans le dossier ***docs*** de votre dépôt Github. Le tout doit se trouver dans la branche **"master"**.
 
-## Arboressance 
+## Arborescence 
 
-Dans le schema si dessous vous trouvez l'arboraissence du système de documentation, le "." représente la racine du dossier docs de votre plugin, viens en suite cette arbraissence, nous avons donc 2 dossiers **"docs"**, il faut bien mettre les fichier **".md"** dans le 2ème dossier **"docs"**
+Dans le schéma ci-dessous vous trouverez l'arborescence du système de documentation. Le "." représentant la racine du dossier ***docs*** de votre plugin, les différents dossiers et fichiers indiqués doivent donc se trouver à l'intérieur de ce dossier ***docs***. Vous pouvez voir qu'il y a un sous-dossier **"docs"**, dans lequel il faut bien mettre les fichiers **".md"**.
 
 Exemple : 
 > ./dossierMonPlugin/docs/docs/MesFichiers.md
 
-Arboressance :
+Arborescence :
 
 ```		
-		.
-        |-- _config.yml
-        |-- _layouts
-        	|--default.html
-        |-- assetes
-        	|-- logo_white.png
-            |-- css
-            	|-- style.scss
-                |-- styleJeedom-1.scss
-                |-- styleJeedom-2.scss
-                |-- toc.scss
-        |-- docs
-        	|-- index.md
-            |-- (autre fichier .md des traductions)
-            |-- ...
-        |-- images
-        	|-- (images utiliser par la documentation)
-            |-- ...
-        |-- js
-        	|-- custom.jeedom.js
-            |-- jquery.inview.min.js
-            |-- jquery.toc.js
+	.
+	|-- _config.yml
+	|-- _layouts
+		|--default.html
+	|-- assets
+		|-- logo_white.png
+		|-- css
+            		|-- style.scss
+			|-- styleJeedom-1.scss
+			|-- styleJeedom-2.scss
+			|-- toc.scss
+	|-- docs
+		|-- index.md
+		|-- (autres fichiers .md des traductions)
+		|-- ...
+	|-- images
+		|-- (images utilisées par la documentation)
+		|-- ...
+	|-- js
+		|-- custom.jeedom.js
+		|-- jquery.inview.min.js
+		|-- jquery.toc.js
 ```        
 
 
 ## Activation de Github Pages
 
-Dans le dépôt de votre plugin, aller dans l'onglet **"Settings"**, randez-vous dans la partie **"Github Pages"**, dans la liste déroulante du paragraphe **"Source"** choisir **"master branch"**, puis sauver (Pas besoin de choisir de thème, tout configurer dans les fichiers installer précédement)
+Dans le dépôt de votre plugin, aller dans l'onglet **"Settings"**, rendez-vous dans la partie **"Github Pages"**, dans la liste déroulante du paragraphe **"Source"** choisir **"master branch"**, puis sauver. (Pas besoin de choisir de thème, tout est configuré dans les fichiers installés précédemment)
 
-## Accèder à la page de documentations
+## Accéder à la page de documentation
 
-A partir de là, vous avez une documentation fonctionnel accéssible à l'adresse 
-> "https://VOTRE-NOM-UTILISATEUR.github.io/NOM-DU_DEPOT/docs/"
+A partir de là, vous avez une documentation fonctionnelle accessible à l'adresse 
+> "https://VOTRE-NOM-UTILISATEUR-GITHUB.github.io/NOM-DU_DEPOT/docs/"
 
 
 # Configuration de base
 
-La totalité de la configuration, personnalisation de base à été regrouper dans une fichier de configuration nommer **"_config.yml"**, ce fichier permet de configurer simplement des élément comme les couleurs, le nom de l'image logo, le design (positionnement) à utiliser, les langues disponible ainssi que divers informations.
+La totalité de la configuration et personnalisation de base à été regroupée dans un fichier de configuration nommé **"_config.yml"**. Ce fichier permet de configurer simplement des éléments comme les couleurs, le nom de l'image logo, le design (positionnement), les langues disponibles ainsi que diverses informations.
 
 ## Clé "theme"
 
-Cette clé contien le nom du thème de base sur le quelle est fonder le thème jeedom, cette valeur ne dois pas être modifier.
+Cette clé contient le nom du thème de base sur lequel est fondé le thème jeedom, cette valeur ne doit pas être modifiée.
 
 ## Clé "couleursPersoActif"
 
-Cette clé prend comme valeurs **true** ou **false**, cela permet de switcher entre le jeu de **"couleursDefaut"** et **"couleursPerso"**, par défaut **couleursPersoActif** est paramétrer à **"false"** se qui active le jeu de couleur de la partie **"couleursDefaut"**.
+Cette clé prend comme valeur **false** ou **true**, cela permet de basculer entre le jeu de **"couleursDefaut"** (false) et **"couleursPerso"** (true), par défaut **couleursPersoActif** est paramétré à **"false"**.
 
 ## Clé "couleursDefaut"
 
-Cette clé contiens d'autre clé (sous-clé), chaqu'une d'elle vous donnera la posibilité de modifier la couleur d'un élément du thème.
+Cette clé contient d'autres clés (sous-clés), chacune d'elles vous donnera la posibilité de modifier la couleur d'un élément du thème.
 
-Le couleur doivent être au format hexadecimal (Hex), exemple : **#D5FE98** !!! sans le ***#*** !!!
+Les couleurs doivent être au format hexadecimal (Hex), exemple : **#D5FE98** !!! sans le ***#*** !!!
 
-En principe il ne faut pas modifier ses valeurs, se sont les couleurs par défaut du thème fournis par Jeedom, pour personnaliser les couleurs il convient d'utiliser la clé et les sous clé **"couleursPerso"**, pour switcher il vous faut modifier la clé **"couleursPersoActif"**
+En principe il ne faut pas modifier ces valeurs, ce sont les couleurs par défaut du thème fourni par Jeedom, pour personnaliser les couleurs il convient d'utiliser la clé et les sous-clés **"couleursPerso"**. (Pour basculer il vous faut modifier la clé **"couleursPersoActif"**)
 
-Exemple extret du fichier de configuration :
+Exemple extrait du fichier de configuration :
  	
 ```
 couleursDefaut:  
@@ -120,101 +122,101 @@ couleursDefaut:
 	menu-color: '1F5615'
 ```
 
-### Clé : body-bakground-color
+### Sous-Clé "body-background-color"
 
-Cette clé permet de modifier la couleur de font de la partie texte de la documentation
-
-
-### Clé : body-color
-
-Cette clé permet de modifier la couleur du texte de la documentation
+Cette clé permet de modifier la couleur de fond du corps de la documentation.
 
 
-### Clé : head-background-color
+### Sous-Clé "body-color"
 
-Cette clé permet de modifier la couleur de font de l'entête de la page
-
-
-### Clé : head-color
-
-Cette clé permet de modifier la couleur du texte de l'entête de la page
+Cette clé permet de modifier la couleur du texte du corps de la documentation.
 
 
-### Clé : hx-color
+### Sous-Clé "head-background-color"
 
-Cette clé permet de modifier la couleur des titres et sous-titres de la documentation
-
-
-### Clé : menu-background-color
-
-Cette clé permet de modifier la couleur de font du menu "Sommaire"
+Cette clé permet de modifier la couleur de fond de l'entête de la documentation.
 
 
-### Clé : menu-title-color
+### Sous-Clé "head-color"
 
-Cette clé permet de modifier la couleur du texte du titre "Sommaire"
+Cette clé permet de modifier la couleur du texte de l'entête de la documentation.
 
 
-### Clé : menu-color
+### Sous-Clé "hx-color"
 
-Cette clé permet de modifier la couleur du texte des liens du menu "Sommaire"
+Cette clé permet de modifier la couleur des titres et sous-titres de la documentation.
+
+
+### Sous-Clé "menu-background-color"
+
+Cette clé permet de modifier la couleur de fond du menu "Sommaire".
+
+
+### Sous-Clé "menu-title-color"
+
+Cette clé permet de modifier la couleur du texte du titre "Sommaire".
+
+
+### Sous-Clé "menu-color"
+
+Cette clé permet de modifier la couleur du texte des liens du menu "Sommaire".
 
 
 ## Clé "couleursPesro"
 
-Cette clé contiens d'autre clé (sous-clé), chaqu'une d'elle vous donnera la posibilité de modifier la couleur d'un élément du thème.
+Cette clé contient d'autres clés (sous-clés), chacune d'elles vous donnera la posibilité de modifier la couleur d'un élément du thème.
 
-Le couleur doivent être au format hexadecimal (Hex), exemple : **#D5FE98** !!! sans le ***#*** !!!
+Les couleurs doivent être au format hexadecimal (Hex), exemple : **#D5FE98** !!! sans le ***#*** !!!
 
-En principe il convient de modifier cette clé et ses sous-clés pour modifier les couleurs, en cas de mauvais jeu de couleurs il vous sera donc possible de revenir facilement au couleurs par défaut en modifiant la clé **"couleursPersoActif"**
+En principe il convient de modifier cette clé et ses sous-clés pour modifier les couleurs, en cas de mauvais jeu de couleurs il vous sera donc possible de revenir facilement aux couleurs par défaut en modifiant la clé **"couleursPersoActif"**.
 
-Les sous-clés sont les mêmes que pour la clé **"couleursDefaut"**, reporter vous à cette partie pour plus d'information.
+Les sous-clés sont les mêmes que pour la clé **"couleursDefaut"**, reportez-vous à cette section pour plus d'informations.
 
 
 ## Clé "nomLogo"
 
-Cette clé permet d'indiquer le nom de l'image qui fais office de logo du plugin dans Jeedom, cette image doit se trouver dans le dossier **"plugin_info"** qui se trouve à la racine du dossier de votre plugin, il faut juste indiquer le nom et sont extention, sans autre information.
+Cette clé permet d'indiquer le nom de l'image qui fait office de logo du plugin dans Jeedom, cette image doit se trouver dans le dossier **"plugin_info"** qui se trouve à la racine du dossier de votre plugin, il faut juste indiquer le nom et son extension, sans autres informations.
 
 Exemple : ***monPlugin_icon.png***
 
 
 ## Clé "themeVersion"
 
-Cette clé donne la version du thème fourni par Jeedom, il ne faut en aucun cas la modifier, elle es utilisée par le script de convertion "ASCIIDOC" en "Markdown" et dans le future elle peut-être utilisée par un système de mise à jour du thème
+Cette clé donne la version du thème fourni par Jeedom, il ne faut en aucun cas la modifier, elle est utilisée par le script de conversion "ASCIIDOC" en "Markdown" et dans le futur elle peut être utilisée par un système de mise à jour du thème.
 
 La valeur de cette clé doit être un entier.
 
 
 ## Clé "design"
 
-Cette clé permet de modifier la selection du fichier CSS de positionnement, par défaut le théme fourni par Jeedom dipose de 2 designs.
+Cette clé permet de choisir un fichier CSS de positionnement. Par défaut le thème fourni par Jeedom dipose de 2 designs.
 
-La clé prend en valeur un entier, par défaut elle veut **"1"**, pour le deuxième designe il suffi de lui donner la valeur **"2"**
+La clé prend en valeur un entier, par défaut elle vaut **"1"**, pour le deuxième design il suffit de lui donner la valeur **"2"**.
 
 ## Clé "langs"
 
-Cette clé contient un tableau de valeurs, qui représente les langues dispnible pour la documentation de votre plugin.
+Cette clé contient un tableau de valeurs, qui représentent les langues disponibles pour la documentation de votre plugin.
 
-Chaque langues doit être au format "{{ page.key_do_not_edit_lang }}"
+Chaque langue doit être au format "{{ page.key_do_not_edit_lang }}"
 
-Exemple extret du fichier de configuration :
+Exemple extrait du fichier de configuration :
 
 ```
 [fr_FR,en_US,it_IT,ru_RU]
 ```
 
-Actuelement la mise à jour de ses valeurs se fais manuellement, c'est a vous d'ajouter les valeurs qui correspondent, sauf dans le cas de l'utilisation du script de convertion (vois -> Convertion anciennent documentation) qui mettre les bonne valeur en fonction des fichier déjà présent.
+Actuellement la mise à jour de ces valeurs se fait manuellement, c'est à vous d'ajouter les valeurs qui correspondent, sauf dans le cas de l'utilisation du script de conversion (choix -> Conversion ancienne documentation) qui mettra les bonnes valeurs en fonction des fichiers déjà présents.
 
-Dans le futur il est prévu d'avoir une mise à jour automatique de la valeur à la création d'une nouvelle traduction (nouvelle langue non présente)
+Dans le futur il est prévu d'avoir une mise à jour automatique de la valeur à la création d'une nouvelle traduction (nouvelle langue non présente).
 
 ## Clé "dateConversion"
 
-Cette clé donne la date et heure de conversion des fichier "ASCIIDOC" en "Markdown", il ne faut en aucun cas modifier cette valeur qui es utiliser par le scripe de conversion, et probablement aussi par le système de mise à jour du thème.
+Cette clé donne la date et heure de conversion des fichiers "ASCIIDOC" en "Markdown", il ne faut en aucun cas modifier cette valeur qui est utilisée par le script de conversion, et probablement aussi par le système de mise à jour du thème.
 
-Le format de cette valeur **"2017-12-25-22h00"**
+Le format de cette valeur est **"2017-12-25-22h00"**
 
 
-# Convertion anciennent documentation
+# Conversion ancienne documentation
 
 
 
