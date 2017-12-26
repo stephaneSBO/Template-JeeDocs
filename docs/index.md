@@ -33,13 +33,48 @@ Pour les devloppeurs c'est un gains importent de temps tout en garantissent une 
 
 ## Installation des fichiers et dossier
 
-Se rendre sur le dépôt Github du Template docs Jeedom -> .......***URL à ajouter***.......
+Se rendre sur le dépôt Github du Template JeeDocs -> .......***URL à ajouter***.......
 
 Télécharger sur votre ordinateur le .zip du dépot
 
 Dans le dépot de votre plugin ou dans sont dossier local, créer un dossier ***docs*** à la racine
 
 Dézipper le fichier télécharger dans le dossier local ***docs*** de votre plugin ou dans un dossier temporaire pour transférer les fichiers et dossiers dans le dosser ***docs*** de votre dépot Github. Le tout dois se trouver dans la branche **"master"**.
+
+## Arboressance 
+
+Dans le schema si dessous vous trouvez l'arboraissence du système de documentation, le "." représente la racine du dossier docs de votre plugin, viens en suite cette arbraissence, nous avons donc 2 dossiers **"docs"**, il faut bien mettre les fichier **".md"** dans le 2ème dossier **"docs"**
+
+Exemple : 
+> ./dossierMonPlugin/docs/docs/MesFichiers.md
+
+Arboressance :
+
+```		
+		.
+        |-- _config.yml
+        |-- _layouts
+        	|--default.html
+        |-- assetes
+        	|-- logo_white.png
+            |-- css
+            	|-- style.scss
+                |-- styleJeedom-1.scss
+                |-- styleJeedom-2.scss
+                |-- toc.scss
+        |-- docs
+        	|-- index.md
+            |-- (autre fichier .md des traductions)
+            |-- ...
+        |-- images
+        	|-- (images utiliser par la documentation)
+            |-- ...
+        |-- js
+        	|-- custom.jeedom.js
+            |-- jquery.inview.min.js
+            |-- jquery.toc.js
+```        
+
 
 ## Activation de Github Pages
 
@@ -73,16 +108,17 @@ En principe il ne faut pas modifier ses valeurs, se sont les couleurs par défau
 
 Exemple extret du fichier de configuration :
  	
-    couleursDefaut:  
- 		body-background-color: 'f0f8df' 
-  		body-color: '2E5519'
-  		head-background-color: '96C927'
-  		head-color: 'f1ffe7'
-  		hx-color: '82BA1B'
-  		menu-background-color: 'D7F6C0'
-  		menu-title-color: '82BA1B'
-		menu-color: '1F5615'
-
+```
+couleursDefaut:  
+	body-background-color: 'f0f8df' 
+	body-color: '2E5519'
+	head-background-color: '96C927'
+	head-color: 'f1ffe7'
+	hx-color: '82BA1B'
+	menu-background-color: 'D7F6C0'
+	menu-title-color: '82BA1B'
+	menu-color: '1F5615'
+```
 
 ### Clé : body-bakground-color
 
@@ -162,8 +198,10 @@ Cette clé contient un tableau de valeurs, qui représente les langues dispnible
 Chaque langues doit être au format "{{ page.key_do_not_edit_lang }}"
 
 Exemple extret du fichier de configuration :
-	
-    [fr_FR,en_US,it_IT,ru_RU]
+
+```
+[fr_FR,en_US,it_IT,ru_RU]
+```
 
 Actuelement la mise à jour de ses valeurs se fais manuellement, c'est a vous d'ajouter les valeurs qui correspondent, sauf dans le cas de l'utilisation du script de convertion (vois -> Convertion anciennent documentation) qui mettre les bonne valeur en fonction des fichier déjà présent.
 
@@ -181,6 +219,150 @@ Le format de cette valeur **"2017-12-25-22h00"**
 
 
 # Guide de rédaction
+
+La rédaction de la documentation se fais en utilisent des fichiers **".md"** (Mardown), cela permet unrédaction aussi rappide qu'avec un simple fichier texte, avec en plus la mise en forme rapide et facile à apprendre même pour les personnes qui non pas de connaissence en programmation.
+
+Pour réaliser la documentation, une fois installer et configurer, il ni as donc aucun autre fichier à modifier que le(s) fichier(s) du dossier "./dossierMonPlugin/docs/docs/"
+
+On peux pour éditer un fichier .md utiliser n'importe quelle éditeur de texte, ou directement depuis l'éditeur intégrer au dépot GitHub.
+
+## Structure du fichier .md
+
+Pour que le fichier .md soie valide, il doit être composé de 2 parties : 
+1. La première partie doit commancer et se terminer par "---", entre deux série de clé qui vont permetre au système d'ajouter des éléments linguistique traduit dans l'interface fournie par jeedom pour la doc
+
+    ```
+    ---
+    key_do_not_edit_lang: fr_FR
+    key_do_not_edit_label:
+    key_do_not_edit_titreMenu: Sommaire
+    key_do_not_edit_btnAffiche: Déplier
+    key_do_not_edit_btnMasquer: Cacher
+    key_do_not_edit_messageHeadMobile: Version mobile du site
+    ---
+    ```
+   La partie de gauche de chaqu'une de ses lignes ne doit sur tout pas être modifier se sont les clés (repère) pour le système, la partie de droite peux être modifier pour changer le texte, c'est eux qui seront traduit dans les divers .md d'autre langue.
+ 
+ 
+2. La deuxième partie contiens quant à elle le contenu propement dis.  
+   
+    	# Titre
+      	## Sous-titre
+      	paragraphe 
+      	...
+      	...
+      	...
+ 
+
+
+## Balisage de base
+
+Sur internet nous trouvons pliens de site qui décrivent quelles sont les règle pour les différent balisages qui servirons au convertiseur .md en .html pour la mise en forme des élément, on se contentera donc ici de vous donnez juste les règles de base.
+
+A savoir que le langage Mardown interprète certin caractère telque "\\ \* \` \- \_ \[\] \(\) \{\} \# \+ \. \!", selon leur position ou répétition il ne seront donc pas afficher mais interpreter pour la mise en forme. Pour pouvoir afficher un de ses caractères il faut donc les "échappers" avec le caractère "antislash" ( \\ ) si il n'es pas afficher
+
+
+### Titre de premier niveau
+
+Tout as gauche du fichier (sans espace avec le bord de page) placer un "\#" suivit d'un seul espace, puis le texte du titre.
+
+Les titres de premier niveau sont repris automatiquement dans le menu "Sommaire" pour le créer.
+
+###### Exemple :
+
+```
+# Titre 1
+```    
+
+### Titre de deuxième niveau
+
+Tout à gauche du fichier (sans espace avec le bord de page) placer deux "\##" suivit d'un seul espace, puis le texte du titre.
+
+Les titres de deuxième niveau sont repris automatiquement dans le menu "Sommaire" pour le créer.
+
+###### Exemple :
+
+```
+## Titre 2
+```   
+
+### Titre de troixième niveau au sixième
+
+Tout à gauche du fichier (sans espace avec le bord de page) placer entre 3 et 6 "\#" suivit d'un seul espace, puis le texte du titre.
+
+Ces titres ***ne sont pas repris*** pour créer le menu "Sommaire".
+
+###### Exemple :
+
+```
+### Titre 3
+#### Titre 4
+##### Titre 5
+###### Titre 6
+```
+
+### Les paragraphes
+
+Pour créer un nouveau paragraphe il suffi d'avoir un espace entre 2 lignes
+
+###### Incorrect :
+
+```
+Paragraphe 1
+Paragraphe 2
+```        
+   
+###### Correct :
+      
+```
+Paragraphe 1
+        
+Paragraphe 2
+```
+
+        
+### Les listes à puce
+
+Tout à gauche du fichier (sans espace avec le bord de page) placer un (*) suivi d'un espace pour créer une liste à puce, en allent à la ligne et ajoutant une tabulation ont peux créer un sous niveau de liste à puce.
+
+###### Exemple : 
+
+```
+* texte
+* texte
+* texte
+	* texte
+   	* texte
+* texte
+```
+
+### Les liens internet
+
+Il y as plusieurs syntaxe pour cette mise en forme selon le résulat rechercher, entre [] se trouve le texte à afficher, puis sans espace entre () l'adresse internet, voici un exemple :
+
+```
+[Cliquer ici](https://www.google.com)
+```
+
+
+
+### Les images
+
+Les images doivent  se trouver dans le dossiers "./dossierMonPlugin/docs/images/", pour les ajouter dans votre documentation, il faut uriliser la syintaxe ![] qui contien le texte alternatif si l'image n'es pas trouver suivi directement sans espace de () qui contien le lien vers l'image a partire de la racine de la documentation.
+
+###### Exemple :
+
+```
+![image -> markdown_logo.png introuvable](../img/markdown_logo.png)
+```
+
+### Bloc code
+
+#### sans coloration syntaxique
+
+#### avec coloration syntaxique
+
+
 
 # Personnalisation avancée
 
