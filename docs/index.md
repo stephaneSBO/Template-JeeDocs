@@ -248,14 +248,15 @@ Pour que le fichier .md soit valide, il doit être composé de 2 parties :
  
  
 2. La deuxième partie contient quand à elle le texte de la documentation.  
-   
-    	# Titre
-      	## Sous-titre
-      	paragraphe 
-      	...
-      	...
-      	...
  
+```
+# Titre
+## Sous-titre
+paragraphe 
+...
+...
+...
+```
 
 ## Balisage de base
 
@@ -362,13 +363,109 @@ Les images doivent  se trouver dans le dossier "./dossierMonPlugin/docs/images/"
 
 #### sans coloration syntaxique
 
+Pour afficher du code mis en évidance sans coloration syntaxique, il faut sur une nouvelle ligne mettre 3 backqute "***\```***" suivi du code que l'on souaite afficher, puis à nouveau 3 backqute "***```***"
+
+###### Exemple :
+
+```
+Mon code ici
+```
+
 #### avec coloration syntaxique
 
-### Quelques ressources supplémentaires
-["Mastering Markdown"](https://guides.github.com/features/mastering-markdown/)
-["Writing on Github"](https://help.github.com/categories/writing-on-github/)
-["MarkDown Cheatsheet"](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
+Comme pour le bloc code sans coloration, il faut sur une nouvelle ligne mettre backqute "***```***", affin d'ajouter la coloration cette il faut directement après la 3ème ajouter le nom du langage.
+
+```javascript
+if(true){
+ var text = "mon texte";
+}
+```
+
 
 # Personnalisation avancée
 
-# Lien
+***!!! ATTENTION !!!*** les developpeurs ont un devoir de fournir une doc de qualité et une présentation convenable, modifier les fichier qui sont présenter si dessous risque de rendre illisible la documentation, il vous faut donc prendre toutes les précotions pour pouvoir revenir a une version convenable, vous etes seul résponsable en cas de problème si vous avez modifier ses fichiers.
+
+Il y as plusieurs niveau de personnalisation avancé, le premier "Création de sont propre design" comporte peux de risque car il suffi de changer le fichier SCSS pour reprendre un design valider, les autres modification touche au système de thème proposer par jeedom, cela aura pour consécance des modification profonde, de par ce fais une impossibilité d'utiliser les mises à jours proposer par Jeedom sans écraser les votres.
+
+## Création de sont propre design
+
+Il est possible de créer sont propore design, par design on entant positionnement des divers éléments de la page.
+
+Pour créer sont propre design il faut créer un nouveau fichier ".scss" dans le dossier ./assets/css/".
+
+Le nom du fichier doit être dans le format : styleJeedom-***X***.scss, ou ***X*** est un numéro de fichier a mettre en fonction du nombre d'autre fichier design disponible, par defaut il y en as 2, le nom du nouveau fichier serais donc "styleJeedom-3.scss".
+
+Il vous faut commancer le fichier par 2 ligne avec 3 tirrets.
+
+###### exemple : 
+
+```
+---
+---
+votre code CSS et SCSS
+```
+
+Dans le fichier de configuration ***_config.yml*** modifier la clé : ***design*** avec le nombre que vous avez attribuer au nouveau fichier ***styleJeedom-X.scss***
+
+A partire de la il sera pris en compte comme fichier de style en plus des fichiers de base (style.scss et toc.scss) qui vont attribuer les valeurs de base aux éléments de la page.
+
+Les couleurs reste appliquer depuis style.scss et toc.scss, il faut donc modifier dans le fichier de configuration _config.yml.
+
+## Modification profonde
+
+***!!! ATTENTION !!!*** la modification des fichiers nommer si dessous peux avoir un impacte importent sur le fonctionnement et le résultat d'affichage de la documentation, l'équipe jeedom ne peux donc assumer du support en cas de modification de ses fichiers.
+
+### Fichier : default.html
+
+Dans le dossier ./_layouts/, se fichier est le template de base pour générer la page de documentation, il est composer de plusieurs éléments telque du HTML, Liquid, JavaScript, YAML.
+
+Le fichier est lus par GitHub Page pour créer la version HTML distribuer au clien.
+
+### Fichier : style.scss
+
+Dans le dossier ./assets/css/, ce fichier contiens les instruction css de base du thème, la personnalisation des couleurs reprise du fichier _config.yml
+
+### Fichier : toc.scss
+
+Dans le dossier ./assets/css/, se fichier contiens les instruction css de base pour le menu "Sommaire", ainsi que la personnalisation des couleurs reprise du fichier _config.yml pour cette partie.
+
+### Fichier : jquery.inview.min.js<nolink>
+
+Plugin Jquery qui permet de savoir si un élément entre ou sort de l'espace visible, il permet l'effet de mise en gras des titres dans le menu "sommaire" quant les éléments sont visible.
+
+Source : https://github.com/protonet/jquery.inview
+
+
+### Fichier : jquery.toc.js<nolink>
+
+Plugin Jquery qui permet d'avoir un menu autogénérer 
+
+Source : http://projects.jga.me/toc/
+
+
+### Fichier : custom.jeedom.js<nolink>
+
+Plugin Jquery qui permet d'ajouter des fonctionnalité et personnalisation via Javascript pour le thème jeedom.
+
+
+
+# Lien - Ressources
+
+
+* EN
+	* ["GitHup Page"](https://pages.github.com/) : Site officiel pour le générateur de page hébérger par GitHub
+	* ["Help on Github"](https://help.github.com/categories/writing-on-github/): Documentation Github
+	* ["Doc Mita donnée Github Page"](https://help.github.com/articles/repository-metadata-on-github-pages/) : Documentation sur les variable globale disponnible dans Jekyll avec Github page
+	* ["Mastering Markdown"](https://guides.github.com/features/mastering-markdown/)
+	* ["MarkDown Cheatsheet"](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) : Explication condancée
+	* ["Documentation GitLab"](https://docs.gitlab.com/ee/user/markdown.html) : Documentation Markdown du site GitLab
+	* ["Dépot GitHub Jekll"](https://github.com/jekyll/jekyll/tree/master/docs) : Dépot officiel du générateur de page Jekll
+	* ["Site de documentation Jekyll"](https://jekyllrb.com/) : Site officiel de documentation Jekyll hébérger sur GitHub Page
+	* ["Site officiel du language Liquid"](https://shopify.github.io/liquid/) : Site officiel du language Liquide avec documentation, utiliser dans default.htmlet fichier .scss
+* FR
+	* ["Cour Markdown OpenClassRooms"](https://openclassrooms.com/courses/redigez-en-markdown) : Cour sur les base du Markdown du site OpenClassRooms
+	* ["Guide d'un blog"](https://blog.wax-o.com/2014/04/tutoriel-un-guide-pour-bien-commencer-avec-markdown/) : Guide du blog de de Fabien Huet
+	* ["Information Wikipedia"](https://fr.wikipedia.org/wiki/Markdown) : Page Wikipédia sur Markdown
+	* ["Tuto vidéo FR de Grafikart"](https://www.grafikart.fr/tutoriels/html-css/jekyll-505) : Tuto vidéo d'explication Markdown
+	* ["Pense Bête Markdown"](https://github.com/jamstatic/jamstatic-fr/wiki/Pense-b%C3%AAte-Markdown) Pense Bête ent Français pour la rédaction Markdown
