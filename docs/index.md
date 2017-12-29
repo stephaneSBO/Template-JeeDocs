@@ -375,6 +375,17 @@ Mon code ici
 
 Comme pour le bloc code sans coloration, il faut sur une nouvelle ligne mettre backqute "***```***", affin d'ajouter la coloration cette il faut directement après la 3ème ajouter le nom du langage.
 
+Exemple : 
+```
+\```javascript
+if(true){
+ var text = "mon texte";
+}
+\```
+```
+
+###### Résultat :
+
 ```javascript
 if(true){
  var text = "mon texte";
