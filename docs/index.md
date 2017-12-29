@@ -222,16 +222,17 @@ Le format de cette valeur est **"2017-12-25-22h00"**
 
 # Guide de rédaction
 
-La rédaction de la documentation se fais en utilisent des fichiers **".md"** (Mardown), cela permet unrédaction aussi rappide qu'avec un simple fichier texte, avec en plus la mise en forme rapide et facile à apprendre même pour les personnes qui non pas de connaissence en programmation.
+La rédaction de la documentation se fait en utilisant des fichiers **".md"** (Mardown). Ce format permet une rédaction rapide et simple, avec en plus une mise en forme rapide et facile à apprendre même pour les personnes qui n'ont pas de connaissances en programmation.
 
-Pour réaliser la documentation, une fois installer et configurer, il ni as donc aucun autre fichier à modifier que le(s) fichier(s) du dossier "./dossierMonPlugin/docs/docs/"
+Pour réaliser la documentation, une fois installée et configurée, il n'y a aucun autre fichier à modifier que le(s) fichier(s) du dossier "./dossierMonPlugin/docs/docs/"
 
-On peux pour éditer un fichier .md utiliser n'importe quelle éditeur de texte, ou directement depuis l'éditeur intégrer au dépot GitHub.
+Pour éditer un fichier .md on peut utiliser n'importe quelle éditeur de texte, ou le faire directement depuis l'éditeur intégré à GitHub.
 
 ## Structure du fichier .md
 
-Pour que le fichier .md soie valide, il doit être composé de 2 parties : 
-1. La première partie doit commancer et se terminer par "---", entre deux série de clé qui vont permetre au système d'ajouter des éléments linguistique traduit dans l'interface fournie par jeedom pour la doc
+Pour que le fichier .md soit valide, il doit être composé de 2 parties : 
+
+1. La première partie doit commencer et se terminer par "---", entre les deux une série de clés qui vont permettre au système de gérer les éléments traduits dans l'interface de doc fournie par Jeedom.
 
     ```
     ---
@@ -243,10 +244,10 @@ Pour que le fichier .md soie valide, il doit être composé de 2 parties :
     key_do_not_edit_messageHeadMobile: Version mobile du site
     ---
     ```
-   La partie de gauche de chaqu'une de ses lignes ne doit sur tout pas être modifier se sont les clés (repère) pour le système, la partie de droite peux être modifier pour changer le texte, c'est eux qui seront traduit dans les divers .md d'autre langue.
+   La partie de gauche de chacune de ces lignes ne doit surtout pas être modifiée, ce sont les clés (repère) pour le système. La partie de droite peut être modifiée, ce sont ces textes qui seront traduit dans les divers .md des autres langues.
  
  
-2. La deuxième partie contiens quant à elle le contenu propement dis.  
+2. La deuxième partie contient quand à elle le texte de la documentation.  
    
     	# Titre
       	## Sous-titre
@@ -256,19 +257,18 @@ Pour que le fichier .md soie valide, il doit être composé de 2 parties :
       	...
  
 
-
 ## Balisage de base
 
-Sur internet nous trouvons pliens de site qui décrivent quelles sont les règle pour les différent balisages qui servirons au convertiseur .md en .html pour la mise en forme des élément, on se contentera donc ici de vous donnez juste les règles de base.
+Sur internet il existe plein de sites qui décrivant les différentes balises qui serviront au convertiseur (.md en .html) pour la mise en forme des éléments. On se contentera donc ici de vous décrire les balises de base.
 
-A savoir que le langage Mardown interprète certin caractère telque "\\ \* \` \- \_ \[\] \(\) \{\} \# \+ \. \!", selon leur position ou répétition il ne seront donc pas afficher mais interpreter pour la mise en forme. Pour pouvoir afficher un de ses caractères il faut donc les "échappers" avec le caractère "antislash" ( \\ ) si il n'es pas afficher
+A savoir que le langage Mardown interprète certain caractères tel que "\\ \* \` \- \_ \[\] \(\) \{\} \# \+ \. \!", selon leur position ou répétition ils ne seront donc pas affichés mais interpretés pour la mise en forme. Pour pouvoir afficher un de ces caractères lorsqu'il est interprété, il faut donc les "échapper" avec le caractère "antislash" ( \\ ).
 
 
 ### Titre de premier niveau
 
-Tout as gauche du fichier (sans espace avec le bord de page) placer un "\#" suivit d'un seul espace, puis le texte du titre.
+Tout à gauche du fichier (sans espace avec le bord de page) placer un "\#" suivi d'un seul espace, puis le texte du titre.
 
-Les titres de premier niveau sont repris automatiquement dans le menu "Sommaire" pour le créer.
+Les titres de premier niveau sont repris automatiquement pour créer le menu "Sommaire".
 
 ###### Exemple :
 
@@ -278,9 +278,9 @@ Les titres de premier niveau sont repris automatiquement dans le menu "Sommaire"
 
 ### Titre de deuxième niveau
 
-Tout à gauche du fichier (sans espace avec le bord de page) placer deux "\##" suivit d'un seul espace, puis le texte du titre.
+Tout à gauche du fichier (sans espace avec le bord de page) placer deux "\#" suivis d'un seul espace, puis le texte du titre.
 
-Les titres de deuxième niveau sont repris automatiquement dans le menu "Sommaire" pour le créer.
+Les titres de deuxième niveau sont repris automatiquement pour créer le menu "Sommaire".
 
 ###### Exemple :
 
@@ -288,9 +288,9 @@ Les titres de deuxième niveau sont repris automatiquement dans le menu "Sommair
 ## Titre 2
 ```   
 
-### Titre de troixième niveau au sixième
+### Titre du troisième au sixième niveau
 
-Tout à gauche du fichier (sans espace avec le bord de page) placer entre 3 et 6 "\#" suivit d'un seul espace, puis le texte du titre.
+Tout à gauche du fichier (sans espace avec le bord de page) placer entre 3 et 6 "\#" suivis d'un seul espace, puis le texte du titre.
 
 Ces titres ***ne sont pas repris*** pour créer le menu "Sommaire".
 
@@ -305,7 +305,7 @@ Ces titres ***ne sont pas repris*** pour créer le menu "Sommaire".
 
 ### Les paragraphes
 
-Pour créer un nouveau paragraphe il suffi d'avoir un espace entre 2 lignes
+Pour créer un nouveau paragraphe il suffit d'avoir un espace entre 2 lignes
 
 ###### Incorrect :
 
@@ -325,7 +325,7 @@ Paragraphe 2
         
 ### Les listes à puce
 
-Tout à gauche du fichier (sans espace avec le bord de page) placer un (*) suivi d'un espace pour créer une liste à puce, en allent à la ligne et ajoutant une tabulation ont peux créer un sous niveau de liste à puce.
+Tout à gauche du fichier (sans espace avec le bord de page) placer un (*) suivi d'un espace pour créer une liste à puce, en allant à la ligne et ajoutant une tabulation ont peux créer un sous niveau de liste à puce.
 
 ###### Exemple : 
 
@@ -340,7 +340,7 @@ Tout à gauche du fichier (sans espace avec le bord de page) placer un (*) suivi
 
 ### Les liens internet
 
-Il y as plusieurs syntaxe pour cette mise en forme selon le résulat rechercher, entre [] se trouve le texte à afficher, puis sans espace entre () l'adresse internet, voici un exemple :
+Il y a plusieurs syntaxes pour cette mise en forme selon le résulat recherché. Entre [] se trouve le texte à afficher, puis sans espace entre () l'adresse internet, voici un exemple :
 
 ```
 [Cliquer ici](https://www.google.com)
@@ -350,7 +350,7 @@ Il y as plusieurs syntaxe pour cette mise en forme selon le résulat rechercher,
 
 ### Les images
 
-Les images doivent  se trouver dans le dossiers "./dossierMonPlugin/docs/images/", pour les ajouter dans votre documentation, il faut uriliser la syintaxe ![] qui contien le texte alternatif si l'image n'es pas trouver suivi directement sans espace de () qui contien le lien vers l'image a partire de la racine de la documentation.
+Les images doivent  se trouver dans le dossier "./dossierMonPlugin/docs/images/", pour les ajouter dans votre documentation, il faut utiliser la syntaxe ![] qui contient le texte alternatif si l'image n'est pas trouvée suivi directement sans espace de () qui contient le lien vers l'image à partir de la racine de la documentation.
 
 ###### Exemple :
 
@@ -364,7 +364,10 @@ Les images doivent  se trouver dans le dossiers "./dossierMonPlugin/docs/images/
 
 #### avec coloration syntaxique
 
-
+### Quelques ressources supplémentaires
+["Mastering Markdown"](https://guides.github.com/features/mastering-markdown/)
+["Writing on Github"](https://help.github.com/categories/writing-on-github/)
+["MarkDown Cheatsheet"](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 
 # Personnalisation avancée
 
